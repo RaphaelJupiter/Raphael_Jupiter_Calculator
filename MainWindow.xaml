@@ -1,0 +1,129 @@
+﻿<Window x:Class="Raphael_Jupiter_Calculatrice.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Raphael_Jupiter_Calculatrice"
+        mc:Ignorable="d"
+        Title="Calculatrice" Height="750" Width="550">
+    <!-- fond de couleur de la page en blanc fumée -->
+    <Grid Background="WhiteSmoke">
+        <!-- Définit 4 colonnes, les trois premières prennent une largeur égale,
+         la dernière a une largeur fixe de 200 unités. -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Définit 6 lignes, la première a une hauteur fixe de 200 unités,
+         les autres prennent l'espace disponible de manière égale. -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <!-- Définit un style global pour les boutons -->
+            <Style TargetType="{x:Type Button}">
+                <!-- Applique une marge de 10 autour du bouton -->
+                <Setter Property="Margin" Value="10"/>
+                <!-- Définit la couleur de fond du bouton -->
+                <Setter Property="Background" Value="#D9D9D9"/>
+                <!-- Définit la taille de la police du texte du bouton -->
+                <Setter Property="FontSize" Value="38"/>
+                <!-- Définit la couleur du texte en blanc -->
+                <Setter Property="Foreground" Value="White"/>
+
+                <!-- Style spécifique pour la bordure des boutons -->
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <!-- Arrondit les coins de la bordure à un rayon de 25 -->
+                        <Setter Property="CornerRadius" Value="25"/>
+                    </Style>
+                </Style.Resources>
+            </Style>
+
+            <Style x:Key="Clear" TargetType="{x:Type Control}">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Background" Value="#E87461"/>
+                <Setter Property="FontSize" Value="38"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="25"/>
+                    </Style>
+                </Style.Resources>
+
+            </Style>
+            <Style x:Key="MyStyle" TargetType="{x:Type Control}">
+                <Setter Property="Margin" Value="15"/>
+                <Setter Property="Background" Value="#D221EF"/>
+                <Setter Property="FontSize" Value="38"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="25"/>
+                    </Style>
+                </Style.Resources>
+
+            </Style>
+            <Style x:Key="Egal" TargetType="{x:Type Control}">
+                <Setter Property="Margin" Value="15"/>
+                <Setter Property="Background" Value="#C4A9DA"/>
+                <Setter Property="FontSize" Value="38"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="25"/>
+                    </Style>
+                </Style.Resources>
+
+            </Style>
+
+        </Grid.Resources>
+
+
+        <!-- Zone de texte (TextBlock) qui occupe la première ligne (Row 0) et 4 colonnes,
+     utilisée pour afficher des informations avec une taille de police de 50. -->
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="4" Name="TB_Display" FontSize="50"></TextBlock>
+
+        <!-- Bouton "1", placé dans la ligne 2, colonne 0. Appelle la méthode "BTN_1_Click" quand on clique dessus. -->
+        <Button Grid.Row="2" Grid.Column="0" Name="BTN_1" Content="1" Click="BTN_1_Click"/>
+
+        <!-- Bouton "2", placé dans la ligne 2, colonne 1. Appelle la méthode "BTN_2_Click" quand on clique dessus. -->
+        <Button Grid.Row="2" Grid.Column="1" Name="BTN_2" Content="2" Click="BTN_2_Click"/>
+
+        <!-- Bouton "3", placé dans la ligne 2, colonne 2. Appelle la méthode "BTN_3_Click" quand on clique dessus. -->
+        <Button Grid.Row="2" Grid.Column="2" Name="BTN_3" Content="3" Click="BTN_3_Click"/>
+
+        <!-- Bouton "+", placé dans la ligne 2, colonne 3. Utilise un style pré-défini "MyStyle" 
+     et appelle la méthode "BTN_Plus_Click" lors du clic. -->
+        <Button Grid.Row="2" Grid.Column="3" Name="BTN_Plus" Style="{StaticResource MyStyle}" Content="+" Click="BTN_Plus_Click"/>
+
+        <Button Grid.Row="3" Grid.Column="0" Name="BTN_4" Content="4" Click="BTN_4_Click"/>
+        <Button Grid.Row="3" Grid.Column="1" Name="BTN_5" Content="5" Click="BTN_5_Click"/>
+        <Button Grid.Row="3" Grid.Column="2" Name="BTN_6" Content="6" Click="BTN_6_Click"/>
+        <Button Grid.Row="3" Grid.Column="3" Name="BTN_Moins"  Style="{StaticResource MyStyle}" Content="-" Click="BTN_Moins_Click"/>
+
+        <Button Grid.Row="4" Grid.Column="0" Name="BTN_7" Content="7" Click="BTN_7_Click"/>
+        <Button Grid.Row="4" Grid.Column="1" Name="BTN_8" Content="8" Click="BTN_8_Click"/>
+        <Button Grid.Row="4" Grid.Column="2" Name="BTN_9" Content="9" Click="BTN_9_Click"/>
+        <Button Grid.Row="4" Grid.Column="3" Name="BTN_Fois"  Style="{StaticResource MyStyle}" Content="*" Click="BTN_Fois_Click"/>
+
+        <Button Grid.Row="5" Grid.Column="0" Name="BTN_0" Content="0" Click="BTN_0_Click"/>
+        <Button Grid.Row="5" Grid.Column="1" Name="BTN_Clear"  Style="{StaticResource Clear}" Content="CLR" Click="BTN_Clear_Click"/>
+        <Button Grid.Row="5" Grid.Column="2" Name="BTN_egal"  Style="{StaticResource Egal}" Content="=" Click="BTN_egal_Click"/>
+        <Button Grid.Row="5" Grid.Column="3" Name="BTN_diviser"   Style="{StaticResource MyStyle}" Content="/" Click="BTN_diviser_Click"/>
+
+        <Button Grid.Row="1" Grid.Column="0" Name="BTN_cos"  Style="{StaticResource MyStyle}" Content="cos" Click="BTN_cos_Click"/>
+        <Button Grid.Row="1" Grid.Column="1" Name="BTN_sin"  Style="{StaticResource MyStyle}" Content="sin" Click="BTN_sin_Click"/>
+        <Button Grid.Row="1" Grid.Column="2" Name="BTN_tan"  Style="{StaticResource MyStyle}" Content="tan" Click="BTN_tan_Click"/>
+        <Button Grid.Row="1" Grid.Column="3" Name="BTN_vir"  Style="{StaticResource MyStyle}" Content="," Click="BTN_vir_Click"/>
+    </Grid>
+</Window>
